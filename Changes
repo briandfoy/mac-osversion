@@ -2,3 +2,6 @@
 	* initial release of a module to try different methods to get 
 	various numbers associated with Mac OS X versions.
 
+0.11 - Sun Nov 18 21:17:08 2007
+	* check if the external commands exist before trying to use them
+
