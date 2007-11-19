@@ -10,7 +10,7 @@ use Carp;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.10';
+$VERSION = '0.11';
 
 =head1 NAME
 
@@ -279,6 +279,8 @@ my $command = '/usr/bin/sw_vers';
 
 sub sw_vers
 	{
+	croak "Missing $command!" unless -x $command;
+
 	my $class = shift;
 	
 	my @list = ();
@@ -308,11 +310,16 @@ missing.
 
 =cut
 
+BEGIN {
+my $command = '/usr/sbin/system_profiler';
+
 sub system_profiler
 	{
+	croak "Missing $command!" unless -x $command;
+
 	my $class = shift;
 	
-	chomp( my $output = `/usr/sbin/system_profiler SPSoftwareDataType` );
+	chomp( my $output = `$command SPSoftwareDataType` );
 	
 	my @list = ();
 
@@ -335,6 +342,7 @@ sub system_profiler
 		
 	@list;	
 	}
+}
 
 =pod
 
@@ -359,11 +367,16 @@ the same list as C<version>, although some fields may be missing.
 
 =cut
 
+BEGIN {
+my $command = '/usr/bin/uname';
+
 sub uname
 	{
+	croak "Missing $command!" unless -x $command;
+
 	my $class = shift;
 	
-	chomp( my $output = `/usr/bin/uname -a` );
+	chomp( my $output = `$command -a` );
 	
 	my @list = ();
 	if( $output =~ /Darwin Kernel Version (\d+\.\d+\.\d+)/ )
@@ -374,6 +387,7 @@ sub uname
 		
 	@list;
 	}
+}
 
 =back
 
