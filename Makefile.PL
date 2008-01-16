@@ -5,7 +5,7 @@ require 5.006;
 
 unless( $^O =~ m/darwin/ )
 	{
-	warn "This module only works on Mac OS X\n";
+	warn "OS unsupported. This module only works on Mac OS X.\n";
 	exit 0;
 	}
 
