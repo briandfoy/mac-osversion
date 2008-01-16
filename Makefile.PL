@@ -5,7 +5,8 @@ require 5.006;
 
 unless( $^O =~ m/darwin/ )
 	{
-	die "This module only works on Mac OS X\n";
+	warn "This module only works on Mac OS X\n";
+	exit 0;
 	}
 
 eval "use Test::Manifest 1.14";

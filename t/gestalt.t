@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-use Test::More 'no_plan';
+use Test::More tests => 4;
 
 my $class  = 'Mac::OSVersion';
 my $method = 'gestalt';
@@ -10,22 +10,29 @@ can_ok( $class, $method );
 
 $" = " | ";
 
-my @list = $class->$method;
+SKIP: {
+skip "Need Mac::Gestlat for these tests", 2 unless 
+	eval{ require 'Mac::Gestalt' };
+
+my @list = eval{ $class->$method };
 #diag( "Got @list" );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Scalar context
-my $version = $class->$method;
-ok( defined $version, "Got something in version [$version] for scalar context" );
+my $version = eval { $class->$method };
+ok( defined $version, 
+	"Got something in version [$version] for scalar context" );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
-# Without specifying a method
-my @list1 = $class->$method;
+# Calling it directly
+my @list1 = eval{ $class->$method };
 #diag( "Got @list1" );
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 # Explicitly specifying a method
-my @list2 = $class->version( $method );
+my @list2 = eval { $class->version( $method ) };
 #diag( "Got @list2" );
 
-is_deeply( \@list1, \@list2, "$method() and version() return the same thing" );
+is_deeply( \@list1, \@list2, 
+	"$method() and version() return the same thing" );
+}

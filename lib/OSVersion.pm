@@ -10,7 +10,7 @@ use Carp;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 =head1 NAME
 
@@ -38,9 +38,9 @@ Mac::OSVersion - Get the Mac OS X system version
 	
 =head1 DESCRIPTION
 
-Extract the values for the various OS numbers ( Mac OS X version, build, kernel )
-using various methods. Methods may use other modules or external programs. So far
-this only works on the current machine.
+Extract the values for the various OS numbers ( Mac OS X version, build,
+kernel ) using various methods. Methods may use other modules or
+external programs. So far this only works on the current machine.
 
 =cut
 
@@ -64,7 +64,11 @@ The available methods are list in "Ways of collecting info". Use the subroutine
 name as C<METHOD>. For instance:
 
 	my @list = Mac::OSVersion->version( 'gestalt' );
-	
+
+=item methods()
+
+Returns the list of methods that C<version> can use to do its work.
+
 =cut
 
 BEGIN {
@@ -81,6 +85,9 @@ foreach my $index ( 0 .. $#positions )
 }
 
 {
+my %methods = map { $_, 1 } 
+	qw(uname gestalt sw_vers system_profiler default);
+
 sub version
 	{
 	my( $class, $method ) = @_;
@@ -95,7 +102,8 @@ sub version
 	
 	return @list;
 	}
-
+	
+sub methods { () = keys %methods }
 }
 
 =item name( [METHOD] )
@@ -116,13 +124,26 @@ number.
 	3	Panther
 	4	Tiger
 	5	Leopard
-	
+
+=item minor_version_numbers()
+
+Returns a list of the minor version numbers
+
+=item minor_version_names()
+
+Returns a list of the names of the minor versions ( I<e.g.> 
+qw(Cheetah Puma ... )
+
 =cut
 
 BEGIN {
 my @names = qw( Cheetah Puma Jaguar Panther Tiger Leopard ) ;
 
 sub minor_to_name { $names[ $_[1] ] }
+
+sub minor_version_numbers { ( 0 .. $#names ) }
+
+sub minor_version_numbers { @names }
 }
 
 sub name 
@@ -414,7 +435,7 @@ sub uname
 =head1 SOURCE AVAILABILITY
 
 This source is part of a SourceForge project which always has the
-latest sources in CVS, as well as all of the previous releases.
+latest sources in SVN, as well as all of the previous releases.
 
 	http://sourceforge.net/projects/brian-d-foy/
 
@@ -427,7 +448,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2007, brian d foy, All Rights Reserved.
+Copyright (c) 2007-2008, brian d foy, All Rights Reserved.
 
 You may redistribute this under the same terms as Perl itself.
 
