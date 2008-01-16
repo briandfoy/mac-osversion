@@ -2,6 +2,13 @@
 	* initial release of a module to try different methods to get 
 	various numbers associated with Mac OS X versions.
 
+0.12 - Wed Jan 16 03:50:26 2008
+	* Added functions minor_version_numbers, minor_version_names, and
+	methods() to get lists of data that the module uses
+	* The gestalt.t test doesn't blow up if Mac::Gestalt is missing.
+	* The Makefile.PL should exit(0) if you're not on a Mac (I'm
+	looking at you, CPAN::Reporter!)
+
 0.11 - Sun Nov 18 21:17:08 2007
 	* check if the external commands exist before trying to use them
 
