@@ -1,4 +1,7 @@
 
+0.14 - Sun Aug 31 12:24:49 2008
+	* Update for Snow Leopard
+
 0.12 - Wed Jan 16 03:50:26 2008
 	* Added functions minor_version_numbers, minor_version_names, and
 	methods() to get lists of data that the module uses
