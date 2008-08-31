@@ -13,7 +13,7 @@ eval "use Test::Manifest 1.14";
 
 WriteMakefile(
 	'NAME'	       => 'Mac::OSVersion',
-	'ABSTRACT'     => 'This is what the module does',
+	'ABSTRACT'     => 'Get the Mac OS X system version',
 	'VERSION_FROM' => 'lib/OSVersion.pm',
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',

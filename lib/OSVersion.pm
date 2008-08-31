@@ -10,7 +10,7 @@ use Carp;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.12';
+$VERSION = '0.13';
 
 =head1 NAME
 
@@ -124,6 +124,7 @@ number.
 	3	Panther
 	4	Tiger
 	5	Leopard
+	6	Snow Leopard
 
 =item minor_version_numbers()
 
@@ -138,6 +139,7 @@ qw(Cheetah Puma ... )
 
 BEGIN {
 my @names = qw( Cheetah Puma Jaguar Panther Tiger Leopard ) ;
+push @names, 'Snow Leopard';
 
 sub minor_to_name { $names[ $_[1] ] }
 
