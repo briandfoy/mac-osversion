@@ -2,7 +2,6 @@
 load.t
 pod.t
 pod_coverage.t
-prereq.t
 minor_to_name.t
 default.t
 version.t

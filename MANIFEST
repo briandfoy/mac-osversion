@@ -17,7 +17,6 @@ t/name.t
 t/pod.t
 t/pod_coverage.t
 t/point.t
-t/prereq.t
 t/sw_vers.t
 t/system_profiler.t
 t/test_manifest
