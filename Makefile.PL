@@ -20,6 +20,8 @@ WriteMakefile(
 	
 	'PREREQ_PM'    => { 
 		'Test::More' => '0',
+		'Mac::Gestalt' => '0',
+		
 		},
 
 	'PM'           => {
