@@ -13,7 +13,7 @@ eval "use Test::Manifest 1.21";
 WriteMakefile(
 	'NAME'	       => 'Mac::OSVersion',
 	'ABSTRACT'     => 'Get the Mac OS X system version',
-	'VERSION_FROM' => 'lib/OSVersion.pm',
+	'VERSION_FROM' => 'lib/Mac/OSVersion.pm',
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 	
@@ -24,14 +24,6 @@ WriteMakefile(
 	'RECOMMENDS' => {
 		# This needs Mac::Carbon, which doesn't work on 64-bit systems
 		'Mac::Gestalt' => '0',
-		},
-
-	'PM'           => {
-		'lib/OSVersion.pm' => '$(INST_LIBDIR)/OSVersion.pm',
-		},
-
-	'MAN3PODS'     => {
-		'lib/OSVersion.pm' => '$(INST_MAN3DIR)/Mac::OSVersion.3',
 		},
 
 	clean  => { FILES    => q|Mac-OSVersion-*| },
