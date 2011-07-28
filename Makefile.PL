@@ -17,14 +17,17 @@ WriteMakefile(
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 	
-	'PREREQ_PM'    => { 
+	'BUILD_REQUIRES' => {
 		'Test::More'   => '0',
+		},
+
+	'RECOMMENDS' => {
+		# This needs Mac::Carbon, which doesn't work on 64-bit systems
 		'Mac::Gestalt' => '0',
-		
 		},
 
 	'PM'           => {
-		'lib/OSVersion.pm'         => '$(INST_LIBDIR)/OSVersion.pm',
+		'lib/OSVersion.pm' => '$(INST_LIBDIR)/OSVersion.pm',
 		},
 
 	'MAN3PODS'     => {
