@@ -1,5 +1,3 @@
-#!/usr/bin/perl
-
 use Test::More tests => 4;
 
 my $class  = 'Mac::OSVersion';
