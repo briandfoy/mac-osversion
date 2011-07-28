@@ -37,8 +37,8 @@ Mac::OSVersion - Get the Mac OS X system version
 	
 =head1 DESCRIPTION
 
-Extract the values for the various OS numbers ( Mac OS X version, build,
-kernel ) using various methods. Methods may use other modules or
+Extract the values for the various OS numbers (Mac OS X version, build,
+kernel) using various methods. Methods may use other modules or
 external programs. So far this only works on the current machine.
 
 =cut
