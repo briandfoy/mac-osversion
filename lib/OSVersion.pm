@@ -1,4 +1,3 @@
-# $Id$
 package Mac::OSVersion;
 use strict;
 
