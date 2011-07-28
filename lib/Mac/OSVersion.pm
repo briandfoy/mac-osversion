@@ -97,8 +97,10 @@ sub version
 		eval { $class->can( $method ) };
 		
 	my @list = $class->$method;
-	unless( wantarray ) { return join ".", @list[0,1,2] }
-	
+	unless( wantarray ) {
+		return join ".", @list[0,1], (defined($list[2]) ? $list[2] : ());
+		}
+
 	return @list;
 	}
 	
@@ -347,7 +349,7 @@ sub system_profiler
 	my @list = ();
 
 	if( $output =~ 
-		m/  \s+System\ Version:\ Mac\ OS\ X\ (\d+\.\d+\.\d+)\ \((.*?)\)
+		m/  \s+System\ Version:\ Mac\ OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
 			\s+Kernel\ Version:\ Darwin\ (\d+\.\d+\.\d+)
 			/xm )
 
