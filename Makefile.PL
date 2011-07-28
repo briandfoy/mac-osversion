@@ -32,5 +32,4 @@ WriteMakefile(
 		},
 
 	clean  => { FILES    => q|Mac-OSVersion-*| },
-
 	);
