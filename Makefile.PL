@@ -8,7 +8,7 @@ unless( $^O =~ m/darwin/ )
 	exit 0;
 	}
 
-eval "use Test::Manifest 1.14";
+eval "use Test::Manifest 1.21";
 
 WriteMakefile(
 	'NAME'	       => 'Mac::OSVersion',
