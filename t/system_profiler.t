@@ -21,7 +21,7 @@ ok( defined $version, "version is defined [$version]" );
 my @list = $class->$method;
 #diag( "Got list @list" );
 is( scalar @list, 6, "There are six entries in list" );
-my $got_version = join ".", @list[0,1,2];
+my $got_version = join ".", grep { defined } @list[0,1,2];
 is( $got_version, $version, "Get same answer as scalar context" );
 }
 
