@@ -2,10 +2,8 @@ use ExtUtils::MakeMaker;
 
 require 5.006;
 
-unless( $^O =~ m/darwin/ )
-	{
-	warn "OS unsupported. This module only works on Mac OS X.\n";
-	exit 0;
+unless( $^O =~ m/darwin/ ) {
+	die "OS unsupported. This module only works on Mac OS X.\n";
 	}
 
 eval "use Test::Manifest 1.21";
