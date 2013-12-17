@@ -9,7 +9,7 @@ use Carp;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.14_01';
+$VERSION = '0.15';
 
 =head1 NAME
 
@@ -127,6 +127,8 @@ number.
 	5	Leopard
 	6	Snow Leopard
 	7   Lion
+	8	Mountain Lion
+	9	Mavericks
 
 =item minor_version_numbers()
 
@@ -141,7 +143,7 @@ qw(Cheetah Puma ... )
 
 BEGIN {
 my @names = qw( Cheetah Puma Jaguar Panther Tiger Leopard ) ;
-push @names, 'Snow Leopard', 'Lion';
+push @names, 'Snow Leopard', 'Lion', 'Mountain Lion', 'Mavericks';
 
 sub minor_to_name { $names[ $_[1] ] }
 
@@ -448,7 +450,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (c) 2007-2011, brian d foy, All Rights Reserved.
+Copyright (c) 2007-2013, brian d foy, All Rights Reserved.
 
 You may redistribute this under the same terms as Perl itself.
 
