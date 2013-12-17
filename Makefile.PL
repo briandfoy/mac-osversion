@@ -24,5 +24,16 @@ WriteMakefile(
 		'Mac::Gestalt' => '0',
 		},
 
+	'META_MERGE' => {
+        'meta-spec' => { version => 2 },
+		resources => {
+			repository => {
+				type => 'git',
+				url  => 'git@github.com:briandfoy/mac-osversion.git',
+				web  => 'https://github.com/briandfoy/mac-osversion',
+				},
+			},
+		},
+
 	clean  => { FILES    => q|Mac-OSVersion-*| },
 	);
