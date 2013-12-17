@@ -350,8 +350,9 @@ sub system_profiler
 	
 	my @list = ();
 
+	# mavericks omits the Mac in the output
 	if( $output =~ 
-		m/  \s+System\ Version:\ Mac\ OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
+		m/  \s+System\ Version:\ (?:Mac\ )? OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
 			\s+Kernel\ Version:\ Darwin\ (\d+\.\d+\.\d+)
 			/xm )
 
