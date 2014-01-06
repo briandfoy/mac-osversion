@@ -1,4 +1,4 @@
-use ExtUtils::MakeMaker;
+use ExtUtils::MakeMaker 6.64;
 
 require 5.006;
 
@@ -15,7 +15,11 @@ WriteMakefile(
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 	
-	'BUILD_REQUIRES' => {
+	'CONFIGURE_REQUIRES' => {
+		'ExtUtils::MakeMaker'   => '6.64',
+		},
+
+	'TEST_REQUIRES' => {
 		'Test::More'   => '0',
 		},
 
