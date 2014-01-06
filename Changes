@@ -1,4 +1,7 @@
 
+0.16 - Mon Jan  6 02:46:23 2014
+	* Update meta data and requirements in Makefile.PL
+
 0.15 - Tue Dec 17 12:24:15 2013
 	* Support Mavericks
 
