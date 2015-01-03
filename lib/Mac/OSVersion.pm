@@ -9,7 +9,7 @@ use Carp;
 use subs qw();
 use vars qw($VERSION);
 
-$VERSION = '0.16';
+$VERSION = '1.001';
 
 =head1 NAME
 
