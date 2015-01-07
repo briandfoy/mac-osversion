@@ -1,4 +1,5 @@
-use ExtUtils::MakeMaker 6.64;
+use strict;
+use warnings;
 
 require 5.006;
 
@@ -6,11 +7,12 @@ unless( $^O =~ m/darwin/ ) {
 	die "OS unsupported. This module only works on Mac OS X.\n";
 	}
 
-eval "use Test::Manifest 1.21";
+my $github    = 'https://github.com/briandfoy/';
+my $main_file = 'lib/';
 
-WriteMakefile(
+my %WriteMakefile = (
 	'NAME'	       => 'Mac::OSVersion',
-	'ABSTRACT'     => 'Get the Mac OS X system version',
+	'ABSTRACT_FROM' => $main_file,
 	'VERSION_FROM' => 'lib/Mac/OSVersion.pm',
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
@@ -41,3 +43,23 @@ WriteMakefile(
 
 	clean  => { FILES    => q|Mac-OSVersion-*| },
 	);
+
+sub arguments { \%WriteMakefile }
+
+do_it() unless caller;
+sub do_it {
+	require File::Spec;
+	my $MM ='ExtUtils::MakeMaker';
+	my $MM_version =
+		eval{ "$MM " . $WriteMakefile{'CONFIGURE_REQUIRES'}{'ExtUtils::MakeMaker'} }
+			//
+		"$MM 6.64";
+	eval "use $MM_version";
+	eval "use Test::Manifest 1.21" 
+		if -e File::Spec->catfile( qw(t test_manifest) );
+	WriteMakefile( %WriteMakefile );
+	}
+
+
+no warnings;
+__PACKAGE__;
