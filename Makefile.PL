@@ -1,24 +1,29 @@
+require 5.008;
 use strict;
 use warnings;
-
-require 5.006;
 
 unless( $^O =~ m/darwin/ ) {
 	die "OS unsupported. This module only works on Mac OS X.\n";
 	}
 
-my $github    = 'https://github.com/briandfoy/';
-my $main_file = 'lib/';
+use File::Spec::Functions qw(catfile);
+
+my $module    = 'Mac::OSVersion';
+my $github    = 'https://github.com/briandfoy/mac-osversion';
+my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
-	'NAME'	       => 'Mac::OSVersion',
+	'NAME'	        => $module,
 	'ABSTRACT_FROM' => $main_file,
-	'VERSION_FROM' => 'lib/Mac/OSVersion.pm',
-	'LICENSE'      => 'perl',
-	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
+	'VERSION_FROM'  => $main_file,
+	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 	
 	'CONFIGURE_REQUIRES' => {
 		'ExtUtils::MakeMaker'   => '6.64',
+		},
+
+	'BUILD_REQUIRES' => {
 		},
 
 	'TEST_REQUIRES' => {
