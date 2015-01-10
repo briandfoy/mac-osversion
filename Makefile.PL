@@ -9,6 +9,8 @@ unless( $^O =~ m/darwin/ ) {
 use File::Spec::Functions qw(catfile);
 
 my $module    = 'Mac::OSVersion';
+( my $dist = $module ) =~ s/::/-/g;
+
 my $github    = 'https://github.com/briandfoy/mac-osversion';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
