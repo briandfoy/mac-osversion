@@ -49,7 +49,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	clean  => { FILES    => q|Mac-OSVersion-*| },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
