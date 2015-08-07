@@ -1,5 +1,6 @@
 Changes
 examples/placeholder.pl
+INSTALL.SKIP
 lib/Mac/OSVersion.pm
 LICENSE
 Makefile.PL
