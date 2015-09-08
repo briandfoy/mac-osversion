@@ -11,6 +11,8 @@ use vars qw($VERSION);
 
 $VERSION = '1.001';
 
+=encoding utf8
+
 =head1 NAME
 
 Mac::OSVersion - Get the Mac OS X system version
@@ -21,10 +23,10 @@ Mac::OSVersion - Get the Mac OS X system version
 
 	my $version = Mac::OSXVersion->version; # 10.4.11
 	my @version = Mac::OSXVersion->version; # (10, 4, 11, 'Tiger', '8.10.1' )
-	
+
 	my $name    = Mac::OSXVersion->name; # Tiger, etc.
 	my $name    = Mac::OSXVersion->minor_to_name( 3 ); 'Panther';
-	
+
 	my $major   = Mac::OSXVersion->major;  # 10 of 10.4.11
 
 	my $minor   = Mac::OSXVersion->minor;  # 4 or 10.4.11
@@ -34,7 +36,7 @@ Mac::OSVersion - Get the Mac OS X system version
 	my $build   = Mac::OSXVersion->build;  # 8R2218
 
 	my $kernel  = Mac::OSXVersion->kernel; # 8.10.1
-	
+
 =head1 DESCRIPTION
 
 Extract the values for the various OS numbers (Mac OS X version, build,
@@ -78,24 +80,24 @@ use vars ( map { "_$_" } @positions );
 foreach my $index ( 0 .. $#positions )
 	{
 	my $name = $positions[$index];
-	
+
 	*{"_$name" } = sub () { $index }
 	}
 }
 
 {
-my %methods = map { $_, 1 } 
+my %methods = map { $_, 1 }
 	qw(uname gestalt sw_vers system_profiler default);
 
 sub version
 	{
 	my( $class, $method ) = @_;
-	
+
 	$method ||= 'default';
-	
+
 	croak( "$class doesn't know about method [$method]" ) unless
 		eval { $class->can( $method ) };
-		
+
 	my @list = $class->$method;
 	unless( wantarray ) {
 		return join ".", @list[0,1], (defined($list[2]) ? $list[2] : ());
@@ -103,7 +105,7 @@ sub version
 
 	return @list;
 	}
-	
+
 sub methods { () = keys %methods }
 }
 
@@ -137,7 +139,7 @@ Returns a list of the minor version numbers
 
 =item minor_version_names()
 
-Returns a list of the names of the minor versions ( I<e.g.> 
+Returns a list of the names of the minor versions ( I<e.g.>
 qw(Cheetah Puma ... )
 
 =cut
@@ -154,14 +156,14 @@ sub minor_version_numbers { ( 0 .. $#names ) }
 sub minor_version_numbers { @names }
 }
 
-sub name 
-	{ 
-	$_[0]->minor_to_name( 
-		${ 
-			[ $_[0]->version( $_[1] ) ] 
-		}[_MINOR] 
+sub name
+	{
+	$_[0]->minor_to_name(
+		${
+			[ $_[0]->version( $_[1] ) ]
+		}[_MINOR]
 		)
-	} 
+	}
 
 =item major( [METHOD] )
 
@@ -183,7 +185,7 @@ C<version> for the possible values. Not all methods can return an answer.
 
 =cut
 
-sub minor { ${ [ $_[0]->version( $_[1] ) ] }[_MINOR] } 
+sub minor { ${ [ $_[0]->version( $_[1] ) ] }[_MINOR] }
 
 =item point( [METHOD] )
 
@@ -194,7 +196,7 @@ C<version> for the possible values. Not all methods can return an answer.
 
 =cut
 
-sub point { ${ [ $_[0]->version( $_[1] ) ] }[_POINT] } 
+sub point { ${ [ $_[0]->version( $_[1] ) ] }[_POINT] }
 
 =item build( [METHOD] )
 
@@ -205,7 +207,7 @@ C<version> for the possible values. Not all methods can return an answer.
 
 =cut
 
-sub build { ${ [ $_[0]->version( $_[1] ) ] }[_BUILD] } 
+sub build { ${ [ $_[0]->version( $_[1] ) ] }[_BUILD] }
 
 =item kernel( [METHOD] )
 
@@ -216,21 +218,21 @@ C<version> for the possible values. Not all methods can return an answer.
 
 =cut
 
-sub kernel { ${ [ $_[0]->version( $_[1] ) ] }[_KERNEL] } 
+sub kernel { ${ [ $_[0]->version( $_[1] ) ] }[_KERNEL] }
 
 =back
 
 =head2 Ways of collecting info
 
-There isn't a single way to get all of the info that C<version> wants to 
+There isn't a single way to get all of the info that C<version> wants to
 provide, and some of the ways might give different answers for the same
 installation. Not all methods can return an answer. Here's a table of
 which methods return what values:
 
 			default    system_profiler   sw_vers      gestalt    uname
-		
-	major     x          x                 x            x        
-	minor     x          x                 x            x 
+
+	major     x          x                 x            x
+	minor     x          x                 x            x
 	point     x          x                 x            x
 	name      x          x                 x            x
 	build     x          x                 x
@@ -250,18 +252,18 @@ Uses several methods to collect information.
 sub default
 	{
 	my $class = shift;
-	
+
 	my @list;
-	
+
 	if( wantarray ) { @list = $class->system_profiler }
 	else            { scalar $class->system_profiler }
 	}
-	
+
 =item gestalt
 
 Only uses C<gestaltSystemVersion> from C<Mac::Gestalt> to get the
 major, minor, point, and name fields. This has the curious bug that
-the point release number will not be greater than 9. 
+the point release number will not be greater than 9.
 
 In scalar context, returns the version as "10.m.p". In list context, returns
 the same list as C<version>, although some fields may be missing.
@@ -271,25 +273,25 @@ the same list as C<version>, although some fields may be missing.
 sub gestalt
 	{
 	my $class = shift;
-	
+
 	eval { require Mac::Gestalt };
 	croak "Need to install Mac:Gestalt to use 'gestalt' method" if $@;
-	
+
 	my @list;
-	
+
 	my $key     = Mac::Gestalt::gestaltSystemVersion();
 	#print STDERR "key is $key\n";
-	
+
 	my $version = sprintf "%x", $Mac::Gestalt::Gestalt{$key};
 	my @version = $version =~ m/^(\d+)(\d)(\d)$/g;
 	#print STDERR "Got version [@version]\n";
-	
+
 	@list[ _MAJOR, _MINOR, _POINT ] = @version;
-	
+
 	return join ".", @list[ _MAJOR, _MINOR, _POINT ] unless wantarray;
-    
+
 	$list[_NAME] = $class->minor_to_name( $list[_MINOR] );
-     
+
     @list;
 	}
 
@@ -311,19 +313,19 @@ sub sw_vers
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
-	
+
 	my @list = ();
-	
+
 	chomp( my $product = `$command -productVersion` );
-	
+
 	return $product unless wantarray;
-	
+
 	chomp( my $build   = `$command -buildVersion` );
-	
+
 	( $list[_MAJOR], $list[_MINOR], $list[_POINT] ) = split /\./, $product;
 	$list[_BUILD] = $build;
 	$list[_NAME] = $class->minor_to_name( $list[_MINOR] );
-	
+
 	@list;
 	}
 }
@@ -347,30 +349,30 @@ sub system_profiler
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
-	
+
 	chomp( my $output = `$command SPSoftwareDataType` );
-	
+
 	my @list = ();
 
 	# mavericks omits the Mac in the output
-	if( $output =~ 
+	if( $output =~
 		m/  \s+System\ Version:\ (?:Mac\ )? OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
 			\s+Kernel\ Version:\ Darwin\ (\d+\.\d+\.\d+)
 			/xm )
 
 		{
 		return $1 unless wantarray;
-		
+
 		my( $version, $build, $kernel ) = ($1, $2, $3 );
-		
+
 		( $list[_MAJOR], $list[_MINOR], $list[_POINT] ) = split /\./, $version;
-		
+
 		$list[_BUILD]  = $build;
 		$list[_KERNEL] = $kernel;
 		$list[_NAME]   = $class->minor_to_name( $list[_MINOR] );
 		}
-		
-	@list;	
+
+	@list;
 	}
 }
 
@@ -385,7 +387,7 @@ Software:
       Boot Volume: Tiger
       Computer Name: macbookpro
       User Name: brian d  foy (brian)
-      
+
 =cut
 
 =item uname
@@ -405,16 +407,16 @@ sub uname
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
-	
+
 	chomp( my $output = `$command -a` );
-	
+
 	my @list = ();
 	if( $output =~ /Darwin Kernel Version (\d+\.\d+\.\d+)/ )
 		{
 		return $1 unless wantarray;
 		$list[_KERNEL] = $1;
 		}
-		
+
 	@list;
 	}
 }
