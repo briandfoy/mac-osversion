@@ -53,7 +53,6 @@ my %WriteMakefile = (
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
 	'CONFIGURE_REQUIRES' => {
-		'ExtUtils::MakeMaker'   => '6.64',
 		'File::Spec::Functions' => '0',
 		},
 
@@ -76,6 +75,9 @@ my %WriteMakefile = (
 				type => 'git',
 				url  => 'git@github.com:briandfoy/mac-osversion.git',
 				web  => 'https://github.com/briandfoy/mac-osversion',
+				},
+			bugtracker => {
+				url => 'https://github.com/briandfoy/mac-osversion/issues',
 				},
 			},
 		},
