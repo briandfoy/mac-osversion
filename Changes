@@ -1,5 +1,8 @@
 Revision history for Perl module Ma::OSVersion
 
+1.002 2016-06-30T23:04:33Z
+	* Add El Capitan and Sierra
+
 1.01 - 2015-01-03
 	* Add Yosemite to the list
 
