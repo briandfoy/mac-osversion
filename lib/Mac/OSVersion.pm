@@ -21,21 +21,21 @@ Mac::OSVersion - Get the Mac OS X system version
 
 	use Mac::OSVersion;
 
-	my $version = Mac::OSXVersion->version; # 10.4.11
-	my @version = Mac::OSXVersion->version; # (10, 4, 11, 'Tiger', '8.10.1' )
+	my $version = Mac::OSVersion->version; # 10.4.11
+	my @version = Mac::OSVersion->version; # (10, 4, 11, 'Tiger', '8.10.1' )
 
-	my $name    = Mac::OSXVersion->name; # Tiger, etc.
-	my $name    = Mac::OSXVersion->minor_to_name( 3 ); 'Panther';
+	my $name    = Mac::OSVersion->name; # Tiger, etc.
+	my $name    = Mac::OSVersion->minor_to_name( 3 ); 'Panther';
 
-	my $major   = Mac::OSXVersion->major;  # 10 of 10.4.11
+	my $major   = Mac::OSVersion->major;  # 10 of 10.4.11
 
-	my $minor   = Mac::OSXVersion->minor;  # 4 or 10.4.11
+	my $minor   = Mac::OSVersion->minor;  # 4 or 10.4.11
 
-	my $point   = Mac::OSXVersion->point;  # 11 of 10.4.11
+	my $point   = Mac::OSVersion->point;  # 11 of 10.4.11
 
-	my $build   = Mac::OSXVersion->build;  # 8R2218
+	my $build   = Mac::OSVersion->build;  # 8R2218
 
-	my $kernel  = Mac::OSXVersion->kernel; # 8.10.1
+	my $kernel  = Mac::OSVersion->kernel; # 8.10.1
 
 =head1 DESCRIPTION
 
