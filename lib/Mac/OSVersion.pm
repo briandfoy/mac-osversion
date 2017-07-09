@@ -134,6 +134,7 @@ number.
 	10	Yosemite
 	11  El Capitan
 	12  Sierra
+	13  High Sierra
 
 =item minor_version_numbers()
 
@@ -149,7 +150,8 @@ qw(Cheetah Puma ... )
 BEGIN {
 my @names = qw( Cheetah Puma Jaguar Panther Tiger Leopard ) ;
 push @names, 'Snow Leopard', 'Lion', 'Mountain Lion',
-	'Mavericks', 'Yosemite', 'El Capitan', 'Sierra';
+	'Mavericks', 'Yosemite', 'El Capitan', 'Sierra',
+	'High Sierra';
 
 sub minor_to_name { $names[ $_[1] ] }
 
