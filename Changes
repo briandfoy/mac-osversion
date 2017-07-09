@@ -1,5 +1,8 @@
 Revision history for Perl module Ma::OSVersion
 
+1.003 2017-07-09T19:46:12Z
+	Add High Sierra, macOS 10.13
+
 1.002 2016-06-30T23:04:33Z
 	* Add El Capitan and Sierra
 
