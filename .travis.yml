@@ -43,10 +43,10 @@ before_install:
 
 install:
     - perl -v
-    - /home/travis/perl5/perlbrew/bin/cpanm --quiet --installdeps --notest .
+    - /home/travis/perl5/perlbrew/bin/cpanm --installdeps --notest .
     - if [ "$OLD_DEVEL_COVER" = "0" ]; then cpanm --quiet --notest Devel::Cover; fi
     - if [ "$OLD_DEVEL_COVER" = "1" ]; then cpanm --quiet --notest Devel::Cover@1.23; fi
-    - /home/travis/perl5/perlbrew/bin/cpanm --quiet --notest Devel::Cover::Report::Coveralls
+    - /home/travis/perl5/perlbrew/bin/cpanm --notest Devel::Cover::Report::Coveralls
 
 script:
     - cover -delete && cover -test
