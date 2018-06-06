@@ -76,8 +76,7 @@ no strict 'refs';
 my @positions = qw(MAJOR MINOR POINT NAME BUILD KERNEL);
 use vars ( map { "_$_" } @positions );
 
-foreach my $index ( 0 .. $#positions )
-	{
+foreach my $index ( 0 .. $#positions ) {
 	my $name = $positions[$index];
 
 	*{"_$name" } = sub () { $index }
@@ -88,8 +87,7 @@ foreach my $index ( 0 .. $#positions )
 my %methods = map { $_, 1 }
 	qw(uname gestalt sw_vers system_profiler default);
 
-sub version
-	{
+sub version {
 	my( $class, $method ) = @_;
 
 	$method ||= 'default';
@@ -160,8 +158,7 @@ sub minor_version_numbers { ( 0 .. $#names ) }
 sub minor_version_numbers { @names }
 }
 
-sub name
-	{
+sub name {
 	$_[0]->minor_to_name(
 		${
 			[ $_[0]->version( $_[1] ) ]
@@ -253,8 +250,7 @@ Uses several methods to collect information.
 
 =cut
 
-sub default
-	{
+sub default {
 	my $class = shift;
 
 	my @list;
@@ -274,8 +270,7 @@ the same list as C<version>, although some fields may be missing.
 
 =cut
 
-sub gestalt
-	{
+sub gestalt {
 	my $class = shift;
 
 	eval { require Mac::Gestalt };
@@ -312,8 +307,7 @@ the same list as C<version>, although some fields may be missing.
 BEGIN {
 my $command = '/usr/bin/sw_vers';
 
-sub sw_vers
-	{
+sub sw_vers {
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
@@ -348,8 +342,7 @@ missing.
 BEGIN {
 my $command = '/usr/sbin/system_profiler';
 
-sub system_profiler
-	{
+sub system_profiler {
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
@@ -362,9 +355,7 @@ sub system_profiler
 	if( $output =~
 		m/  \s+System\ Version:\ (?:Mac\ )? OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
 			\s+Kernel\ Version:\ Darwin\ (\d+\.\d+\.\d+)
-			/xm )
-
-		{
+			/xm ) {
 		return $1 unless wantarray;
 
 		my( $version, $build, $kernel ) = ($1, $2, $3 );
@@ -406,8 +397,7 @@ the same list as C<version>, although some fields may be missing.
 BEGIN {
 my $command = '/usr/bin/uname';
 
-sub uname
-	{
+sub uname {
 	croak "Missing $command!" unless -x $command;
 
 	my $class = shift;
@@ -415,8 +405,7 @@ sub uname
 	chomp( my $output = `$command -a` );
 
 	my @list = ();
-	if( $output =~ /Darwin Kernel Version (\d+\.\d+\.\d+)/ )
-		{
+	if( $output =~ /Darwin Kernel Version (\d+\.\d+\.\d+)/ ) {
 		return $1 unless wantarray;
 		$list[_KERNEL] = $1;
 		}
