@@ -77,7 +77,7 @@ the source repository:
 =back
 
 If you find a problem, file a ticket in the L<issue
-tracker|>:
+tracker|https://github.com/briandfoy/mac-osversion/issues>:
 
 =over 4
 
