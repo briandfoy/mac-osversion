@@ -353,7 +353,7 @@ sub system_profiler {
 
 	# mavericks omits the Mac in the output
 	if( $output =~
-		m/  \s+System\ Version:\ (?:Mac\ )? OS\ X\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
+		m/  \s+System\ Version:\ (?:(?:Mac\ )? OS\ X|macOS)\ (\d+\.\d+(?:\.\d+)?)\ \((.*?)\)
 			\s+Kernel\ Version:\ Darwin\ (\d+\.\d+\.\d+)
 			/xm ) {
 		return $1 unless wantarray;
