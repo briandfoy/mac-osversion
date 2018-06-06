@@ -16,7 +16,7 @@ matrix:
 
 before_install:
     - curl -L http://cpanmin.us | perl - --self-upgrade
-    - cpan App::perlbrew
+    - cpanm App::perlbrew
     - perlbrew init
 
 install:
