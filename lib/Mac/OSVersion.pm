@@ -449,7 +449,7 @@ sub uname
 
 This module is in Github
 
-	git://github.com/briandfoy/mac-osversion.git
+	https://github.com/briandfoy/mac-osversion
 
 =head1 AUTHOR
 
