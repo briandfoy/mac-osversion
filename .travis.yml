@@ -4,6 +4,8 @@
 
 sudo: false
 
+os: osx
+
 language: perl
 perl:
     - "5.10"
