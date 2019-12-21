@@ -33,7 +33,7 @@ matrix:
           env: OLD_DEVEL_COVER=1
 
 before_install:
-    - sudo cpan App::perlbrew
+    - yes | sudo cpan App::perlbrew
     - perlbrew init
     - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
     - source ~/travis-perl-helpers/init --auto
