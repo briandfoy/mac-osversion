@@ -6,23 +6,7 @@ sudo: false
 
 os: osx
 
-cache:
-    directories:
-    - $HOME/.perlbrew-cache
-
 language: perl
-perl:
-    - "5.10"
-    - "5.12"
-    - "5.14"
-    - "5.16"
-    - "5.18"
-    - "5.20"
-    - "5.22"
-    - "5.24"
-    - "5.26"
-    - "5.28"
-    - "5.30"
 
 env:
     - OLD_DEVEL_COVER=0
@@ -33,12 +17,9 @@ matrix:
           env: OLD_DEVEL_COVER=1
 
 before_install:
-    - yes | sudo cpan App::perlbrew
-    - perlbrew init
     - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
     - source ~/travis-perl-helpers/init --auto
     - build-perl
-    - perl -V
     - build-dist
     - cd $BUILD_DIR
 
