@@ -2,19 +2,9 @@
 # https://github.com/briandfoy/brians_perl_modules_travis_config
 # This file is licensed under the Artistic License 2.0
 
-sudo: false
-
 os: osx
 
 language: perl
-
-env:
-    - OLD_DEVEL_COVER=0
-
-matrix:
-    include:
-        - perl: 5.8
-          env: OLD_DEVEL_COVER=1
 
 before_install:
     - git clone git://github.com/travis-perl/helpers ~/travis-perl-helpers
@@ -25,8 +15,7 @@ before_install:
 
 install:
     - cpanm --quiet --installdeps --notest .
-    - if [ "$OLD_DEVEL_COVER" = "0" ]; then cpanm --quiet --notest Devel::Cover; fi
-    - if [ "$OLD_DEVEL_COVER" = "1" ]; then cpanm --quiet --notest Devel::Cover@1.23; fi
+    - cpanm --quiet --notest Devel::Cover
     - cpanm --quiet --notest Devel::Cover::Report::Coveralls
 
 script:
