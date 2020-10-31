@@ -11,6 +11,7 @@
 *.yml
 *.zip
 *gz
+!.github/workflows/*.yml
 .DS_Store
 .last_cover_stats
 .prove
