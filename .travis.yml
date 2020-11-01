@@ -4,16 +4,5 @@ language: perl
     - "5.32"
     - "5.30"
 
-before_install:
-    - uname -a
-    - perl -v
-
-install:
-    - yes | cpan -T .
-    - cpan -T Devel::Cover Devel::Cover::Report::Coveralls
-
 script:
-    - cover -delete && cover -test
-
-after_success:
-    - cover -report coveralls
+    - echo "This far"
