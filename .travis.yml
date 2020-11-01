@@ -1,7 +1,5 @@
 os: osx
 
-language: perl
-
 before_install:
     - uname -a
     - perl -v
