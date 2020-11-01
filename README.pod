@@ -2,9 +2,6 @@
 
 =encoding utf8
 
-=for HTML <a href="https://travis-ci.org/briandfoy/mac-osversion"><img src="https://travis-ci.org/briandfoy/mac-osversion.svg?branch=master" /></a>
-
-=for HTML <a href='https://coveralls.io/github/briandfoy/mac-osversion?branch=master'><img src='https://coveralls.io/repos/github/briandfoy/mac-osversion/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 =for HTML <a href="https://github.com/briandfoy/mac-osversion/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Mac-OSVersion.svg" /></a>
 
