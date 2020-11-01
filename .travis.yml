@@ -1,12 +1,15 @@
 os: osx
 
+language: perl
+    - "5.32"
+    - "5.30"
+
 before_install:
     - uname -a
     - perl -v
 
 install:
-    -
-    - cpan -T . < yes
+    - yes | cpan -T .
     - cpan -T Devel::Cover Devel::Cover::Report::Coveralls
 
 script:
