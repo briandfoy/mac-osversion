@@ -2,7 +2,7 @@
 
 =encoding utf8
 
-=for HTML <a href="https://github.com/briandfoy/mac-osversion/actions?query=workflow%3Amacos"><img src="https://github.com/briandfoy/mac-osversion/workflows/macos/badge.svg"></a>
+=for HTML <a href="../../actions?query=workflow%3Amacos"><img src="../../workflows/macos/badge.svg"></a>
 
 =for HTML <a href="https://github.com/briandfoy/mac-osversion/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Mac-OSVersion.svg" /></a>
 
