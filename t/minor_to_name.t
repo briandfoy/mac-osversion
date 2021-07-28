@@ -9,7 +9,9 @@ subtest setup => sub {
 	};
 
 subtest minor_arg => sub {
+	diag( "You may see a warning here" );
 	my $name = $class->$method( '4' );
+	diag( "You shouldn't see a warning after this" );
 	ok( defined $name, "Name is defined" );
 	is( $name, 'Tiger', "Tiger is the right version" );
 	};
