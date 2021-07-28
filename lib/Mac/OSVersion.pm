@@ -200,7 +200,7 @@ sub minor_to_name {
 	my( $class, $minor, $major ) = @_;
 	$major //= $class->default_major_version;
 	croak "Unknown Mac version <$major>" unless $class->major_version_exists( $major );
-	$names{$major}[ $minor ]
+	$major == 10 ? $names{$major}[ $minor ] : $names{$major}[ 0 ]
 	}
 
 sub minor_version_numbers {
