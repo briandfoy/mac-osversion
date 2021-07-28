@@ -23,5 +23,5 @@ subtest major_arg => sub {
 subtest macos => sub {
 	my $name = $class->$method( '0', '11' );
 	ok( defined $name, "Name is defined" );
-	is( $name, 'Big Sur', "Tiger is the right version with explicit major version" );
+	is( $name, 'Big Sur', "Big Sur is the right version with explicit major version" );
 	};
