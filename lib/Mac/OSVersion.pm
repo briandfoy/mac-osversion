@@ -154,7 +154,7 @@ With major version 10:
 
 With major version 11:
 
-	0 	Big Sur
+	Big Sur
 
 =item minor_version_numbers( [ MAJOR ] )
 
