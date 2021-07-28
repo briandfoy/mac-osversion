@@ -156,6 +156,10 @@ With major version 11:
 
 	Big Sur
 
+With major version 12:
+
+	Monterey
+
 =item minor_version_numbers( [ MAJOR ] )
 
 Returns a list of the minor version numbers. This takes an optional
@@ -176,11 +180,13 @@ my %names = (
 	'Mavericks', 'Yosemite', 'El Capitan', 'Sierra',
 	'High Sierra', 'Mojave', 'Catalina'],
 	'11' => [ 'Big Sur' ],
+	'12' => [ 'Monterey' ],
 	 );
 
 my %release_dates = (
 	10 => [ ],
 	11 => [ ],
+	12 => [ ],
 	);
 
 sub default_major_version { '10' }
