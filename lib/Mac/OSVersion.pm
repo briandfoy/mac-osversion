@@ -197,7 +197,8 @@ sub major_version_exists {
 
 sub minor_to_name {
 	my( $class, $minor, $major ) = @_;
-	carp "No MAJOR argument to minor_to_name is deprecated. It will assume " . $class->default_major_version;
+	carp "No MAJOR argument to minor_to_name is deprecated. It will assume " . $class->default_major_version
+		unless defined $major;
 	$major //= $class->default_major_version;
 	croak "Unknown Mac version <$major>" unless $class->major_version_exists( $major );
 	$major == 10 ? $names{$major}[ $minor ] : $names{$major}[ 0 ]
