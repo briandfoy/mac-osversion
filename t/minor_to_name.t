@@ -17,11 +17,17 @@ subtest minor_arg => sub {
 subtest major_arg => sub {
 	my $name = $class->$method( '4', '10' );
 	ok( defined $name, "Name is defined" );
-	is( $name, 'Tiger', "Tiger is the right version with explicit major version" );
+	is( $name, 'Tiger', "Tiger is the right version with explicit major version 10" );
 	};
 
 subtest macos => sub {
 	my $name = $class->$method( '0', '11' );
 	ok( defined $name, "Name is defined" );
-	is( $name, 'Big Sur', "Big Sur is the right version with explicit major version" );
+	is( $name, 'Big Sur', "Big Sur is the right version with explicit major version 11" );
+	};
+
+subtest macos => sub {
+	my $name = $class->$method( '0', '12' );
+	ok( defined $name, "Name is defined" );
+	is( $name, 'Monterey', "Monterey is the right version with explicit major version 12" );
 	};
