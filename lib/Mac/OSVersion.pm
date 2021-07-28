@@ -8,7 +8,7 @@ use Carp;
 
 use subs qw();
 
-our $VERSION = '1.005';
+our $VERSION = '1.006';
 
 =encoding utf8
 
@@ -99,7 +99,6 @@ sub version {
 
 	croak( "$class doesn't know about method [$method]" ) unless
 		eval { $class->can( $method ) };
-
 	my @list = $class->$method;
 	unless( wantarray ) {
 		return join ".", @list[0,1], (defined($list[2]) ? $list[2] : ());
@@ -421,7 +420,7 @@ sub system_profiler {
 
 		$list[_BUILD]  = $build;
 		$list[_KERNEL] = $kernel;
-		$list[_NAME]   = $class->minor_to_name( $list[_MINOR] );
+		$list[_NAME]   = $class->minor_to_name( $list[_MINOR], $list[_MAJOR] );
 		}
 
 	@list;
