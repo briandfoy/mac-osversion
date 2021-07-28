@@ -379,7 +379,7 @@ sub sw_vers {
 
 	( $list[_MAJOR], $list[_MINOR], $list[_POINT] ) = split /\./, $product;
 	$list[_BUILD] = $build;
-	$list[_NAME] = $class->minor_to_name( $list[_MINOR] );
+	$list[_NAME] = $class->minor_to_name( $list[_MINOR], $list[_MAJOR] );
 
 	@list;
 	}
