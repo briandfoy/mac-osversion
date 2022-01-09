@@ -180,6 +180,7 @@ my %names = (
 	'High Sierra', 'Mojave', 'Catalina'],
 	'11' => [ 'Big Sur' ],
 	'12' => [ 'Monterey' ],
+	'13' => [ 'Mammoth' ],
 	 );
 
 my %release_dates = (
