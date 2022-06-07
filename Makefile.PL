@@ -79,6 +79,7 @@ my %WriteMakefile = (
 			bugtracker => {
 				url => 'https://github.com/briandfoy/mac-osversion/issues',
 				},
+			homepage => $github,
 			},
 		},
 
