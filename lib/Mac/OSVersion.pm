@@ -8,7 +8,7 @@ use Carp;
 
 use subs qw();
 
-our $VERSION = '1.007';
+our $VERSION = '1.008';
 
 =encoding utf8
 
