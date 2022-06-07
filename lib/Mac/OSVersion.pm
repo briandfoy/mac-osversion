@@ -180,13 +180,14 @@ my %names = (
 	'High Sierra', 'Mojave', 'Catalina'],
 	'11' => [ 'Big Sur' ],
 	'12' => [ 'Monterey' ],
-	'13' => [ 'Mammoth' ],
+	'13' => [ 'Ventura' ],
 	 );
 
 my %release_dates = (
 	10 => [ ],
 	11 => [ ],
 	12 => [ ],
+	13 => [ ],
 	);
 
 sub default_major_version { '10' }
