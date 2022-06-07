@@ -478,8 +478,6 @@ sub uname {
 
 =head1 TO DO
 
-* How does the API look if there is a Mac OS 11?
-
 * Specify a remote machine
 
 =head1 SEE ALSO
