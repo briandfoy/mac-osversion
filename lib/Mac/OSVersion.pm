@@ -151,13 +151,12 @@ With major version 10:
 	14	Mojave
 	15	Catalina
 
-With major version 11:
+With major versions after 10, all point releases have the same identifier:
 
-	Big Sur
-
-With major version 12:
-
-	Monterey
+	11 Big Sur
+	12 Monterey
+	13 Ventura
+	14 Sonoma
 
 =item minor_version_numbers( [ MAJOR ] )
 
@@ -181,6 +180,7 @@ my %names = (
 	'11' => [ 'Big Sur' ],
 	'12' => [ 'Monterey' ],
 	'13' => [ 'Ventura' ],
+	'14' => [ 'Sonoma' ],
 	 );
 
 my %release_dates = (
@@ -188,6 +188,7 @@ my %release_dates = (
 	11 => [ ],
 	12 => [ ],
 	13 => [ ],
+	14 => [ ],
 	);
 
 sub default_major_version { '10' }
