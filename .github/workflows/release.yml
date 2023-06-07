@@ -61,6 +61,7 @@ jobs:
               run: |
                 echo "PATH is" $PATH
                 curl -L https://cpanmin.us | perl - App::cpanminus
+                find / -name cpanm
                 cpanm --sudo --notest IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
