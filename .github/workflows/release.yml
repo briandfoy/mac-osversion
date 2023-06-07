@@ -47,7 +47,6 @@ jobs:
               run: |
                 echo "PERL_LWP_SSL_VERIFY_HOSTNAME=0" >> $GITHUB_ENV
                 echo "/usr/local/bin" >> $GITHUB_PATH
-                echo "PATH is" $PATH
 # I had some problems with openssl on Ubuntu, so I punted by installing
 # cpanm first, which is easy. I can install IO::Socket::SSL with that,
 # then switch back to cpan. I didn't explore this further, but what you
@@ -60,6 +59,7 @@ jobs:
 # modules and don't know what it is, you don't need it.
             - name: Install cpanm and multiple modules
               run: |
+                echo "PATH is" $PATH
                 curl -L https://cpanmin.us | perl - App::cpanminus
                 cpanm --sudo --notest IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
