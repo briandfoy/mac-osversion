@@ -1,5 +1,5 @@
 # brian's standard GitHub Actions release config for Perl 5 modules
-# version 20230528.004
+# version 20240124.003
 # https://github.com/briandfoy/github_workflows
 # https://github.com/features/actions
 # This file is licensed under the Artistic License 2.0
@@ -38,7 +38,15 @@ jobs:
 # If you use a different token name, update "RELEASE_ACTION_TOKEN" in the last
 # step in this job.
         environment: release
-        runs-on: macos-latest
+        runs-on: ${{ matrix.os }}
+        strategy:
+          matrix:
+            os:
+                - ubuntu-20.04
+            perl-version:
+                - 'latest'
+        container:
+            image: perl:${{ matrix.perl-version }}
         steps:
             - uses: actions/checkout@v3
 # Some older versions of Perl have trouble with hostnames in certs. I
@@ -46,8 +54,6 @@ jobs:
             - name: Setup environment
               run: |
                 echo "PERL_LWP_SSL_VERIFY_HOSTNAME=0" >> $GITHUB_ENV
-                echo "/usr/local/bin" >> $GITHUB_PATH
-                echo "/usr/local/Cellar/perl/5.36.1/bin" >> $GITHUB_PATH
 # I had some problems with openssl on Ubuntu, so I punted by installing
 # cpanm first, which is easy. I can install IO::Socket::SSL with that,
 # then switch back to cpan. I didn't explore this further, but what you
@@ -60,15 +66,14 @@ jobs:
 # modules and don't know what it is, you don't need it.
             - name: Install cpanm and multiple modules
               run: |
-                echo "PATH is" $PATH
                 curl -L https://cpanmin.us | perl - App::cpanminus
-                cpanm --sudo --notest IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
+                cpanm --notest IO::Socket::SSL HTTP::Tiny ExtUtils::MakeMaker Test::Manifest
 # Install the dependencies, again not testing them. This installs the
 # module in the current directory, so we end up installing the module,
 # but that's not a big deal.
             - name: Install dependencies
               run: |
-                cpanm ---sudo -notest --installdeps --with-suggests --with-recommends .
+                cpanm --notest --installdeps --with-suggests --with-recommends .
 # This makes the distribution and tests it, but assumes by the time we
 # got here, everything else was already tested.
             - name: Create distro
