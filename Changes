@@ -1,8 +1,5 @@
 Revision history for Perl module Ma::OSVersion
 
-1.014 2024-02-15T05:55:48Z
-	* Fix an incomplete release
-
 1.011 2024-02-13T21:50:26Z
 	* refresh distro, update email addresses, move to BRIANDFOY
 
