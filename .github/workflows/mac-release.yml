@@ -12,9 +12,6 @@
 # This requires that you configure a repository secret named
 # RELEASE_ACTION_TOKEN with a GitHub Personal Access Token
 # that has "read and write" permissions on Repository/Contents
-#
-# Note: this file is changed from the original to run on macOS-latest
-# instead of a linux runner.
 name: release
 
 permissions:
@@ -45,7 +42,7 @@ jobs:
         strategy:
           matrix:
             os:
-                - macOS-latest
+                - ubuntu-20.04
             perl-version:
                 - 'latest'
         container:
