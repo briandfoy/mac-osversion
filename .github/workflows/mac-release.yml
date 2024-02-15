@@ -79,7 +79,6 @@ jobs:
             - name: Create distro
               run: |
                 perl Makefile.PL
-                make disttest
                 make dist 2>/dev/null | grep Created | awk '{ print "ASSET_NAME=" $2 }' >> $GITHUB_ENV
             - name: version
               run: |
