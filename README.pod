@@ -4,7 +4,11 @@
 
 =for HTML <a href="https://www.github.com/briandfoy/mac-osversion/actions?query=workflow%3Amacos"><img src="https://www.github.com/briandfoy/mac-osversion/workflows/macos/badge.svg"></a>
 
-=for HTML <a href="https://github.com/briandfoy/mac-osversion/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Mac-OSVersion.svg" /></a>
+=for HTML <a href="https://metacpan.org/pod/Mac::OSVersion"><img src="https://img.shields.io/cpan/v/Mac-OSVersion.svg" /></A>
+
+=for HTML <a href="https://github.com/briandfoy/module-extract-use/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/Mac-OSVersion.svg" /></a>
+
+=for HTML <a href='https://coveralls.io/github/briandfoy/mac-osversion?branch=master'><img src='https://coveralls.io/repos/github/briandfoy/mac-osversion/badge.svg?branch=master' alt='Coverage Status' /></a>
 
 =for HTML <a href="https://metacpan.org/pod/Mac::OSVersion"><img src="https://img.shields.io/cpan/v/Mac-OSVersion.svg" /></A>
 
