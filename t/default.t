@@ -22,3 +22,5 @@ my @list2 = $class->version( 'default' );
 #diag( "Got @list1" );
 
 is_deeply( \@list1, \@list2, "No method and 'default' return the same thing" );
+
+done_testing();
