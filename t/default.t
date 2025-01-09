@@ -1,4 +1,4 @@
-use Test::More 'no_plan';
+use Test::More;
 
 my $class  = 'Mac::OSVersion';
 my $method = 'default';
