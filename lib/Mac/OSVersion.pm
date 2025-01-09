@@ -157,6 +157,7 @@ With major versions after 10, all point releases have the same identifier:
 	12 Monterey
 	13 Ventura
 	14 Sonoma
+	15 Sequoia
 
 =item minor_version_numbers( [ MAJOR ] )
 
@@ -181,6 +182,7 @@ my %names = (
 	'12' => [ 'Monterey' ],
 	'13' => [ 'Ventura' ],
 	'14' => [ 'Sonoma' ],
+	'15' => [ 'Sequoia' ],
 	 );
 
 my %release_dates = (
@@ -189,6 +191,7 @@ my %release_dates = (
 	12 => [ ],
 	13 => [ ],
 	14 => [ ],
+	15 => [ ],
 	);
 
 sub default_major_version { '10' }
