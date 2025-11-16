@@ -184,7 +184,7 @@ my %names = (
 	'13' => [ 'Ventura' ],
 	'14' => [ 'Sonoma' ],
 	'15' => [ 'Sequoia' ],
-	'16' => [ 'Tahoe' ],
+	'26' => [ 'Tahoe' ],
 	 );
 
 my %release_dates = (
